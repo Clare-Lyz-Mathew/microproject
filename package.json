@@ -1,0 +1,17 @@
+{
+  "name": "esports-arena",
+  "version": "1.0.0",
+  "description": "eSports Tournament & Bracket Management System with React, Express and MySQL JOIN queries (Faker/T1 Theme)",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "node server/server.js",
+    "client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "build:client": "npm run build --prefix client",
+    "db:init": "node server/scripts/initDb.js"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
