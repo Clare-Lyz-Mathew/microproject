@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Microproject Report - ESPORTS ARENA</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    @page {
+      size: A4;
+      margin: 25mm 20mm 25mm 20mm;
+      @bottom-right {
+        content: counter(page);
+        font-family: 'Times New Roman', serif;
+        font-size: 11pt;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 12pt;
+      line-height: 1.6;
+      color: #111827;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px 0;
+      page-break-after: always;
+    }
+
+    .page:last-child {
+      page-break-after: auto;
+    }
+
+    /* Print styles */
+    @media print {
+      body {
+        background: none;
+      }
+      .page {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        page-break-after: always;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: 'Times New Roman', Times, serif;
+      color: #000000;
+      font-weight: bold;
+      margin-top: 1.2em;
+      margin-bottom: 0.5em;
+    }
+
+    h1 { font-size: 18pt; text-align: center; }
+    h2 { font-size: 15pt; border-bottom: 1.5px solid #000; padding-bottom: 4px; margin-top: 1.5em; }
+    h3 { font-size: 13pt; margin-top: 1.2em; }
+    h4 { font-size: 12pt; font-style: italic; }
+
+    p {
+      text-align: justify;
+      margin-bottom: 0.8em;
+      text-indent: 1.5em;
+    }
+
+    .no-indent {
+      text-indent: 0 !important;
+    }
+
+    ul, ol {
+      margin-top: 0.3em;
+      margin-bottom: 0.8em;
+      padding-left: 2em;
+    }
+
+    li {
+      margin-bottom: 0.4em;
+      text-align: justify;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2em 0;
+      font-size: 10.5pt;
+    }
+
+    th, td {
+      border: 1px solid #333333;
+      padding: 7px 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f3f4f6;
+      font-weight: bold;
+    }
+
+    /* Code blocks */
+    pre, code {
+      font-family: 'JetBrains Mono', Consolas, monospace;
+    }
+
+    pre {
+      background-color: #f8fafc;
+      border: 1px solid #cbd5e1;
+      padding: 10px 14px;
+      font-size: 9pt;
+      line-height: 1.4;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin: 1em 0;
+    }
+
+    /* Cover Page Styles */
+    .cover-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 980px;
+      text-align: center;
+      padding: 20px 10px;
+    }
+
+    .cover-header {
+      font-weight: bold;
+      font-size: 14pt;
+      line-height: 1.5;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .cover-sub {
+      font-style: italic;
+      font-size: 12pt;
+      margin: 15px 0 25px 0;
+    }
+
+    .cover-author {
+      margin: 20px 0;
+    }
+
+    .author-name {
+      font-size: 16pt;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+      margin-bottom: 5px;
+    }
+
+    .author-reg {
+      font-size: 13pt;
+      font-weight: bold;
+    }
+
+    .cover-degree-note {
+      font-size: 12pt;
+      margin: 20px 0 5px 0;
+    }
+
+    .cover-degree-name {
+      font-size: 13pt;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .cover-logo-container {
+      margin: 30px 0;
+    }
+
+    .emblem-circle {
+      width: 150px;
+      height: 150px;
+      border: 3px dashed #1e3a8a;
+      border-radius: 50%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      color: #1e3a8a;
+      font-weight: bold;
+      padding: 10px;
+      text-transform: uppercase;
+      font-size: 9pt;
+    }
+
+    .cover-college {
+      font-size: 13pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    .cover-address {
+      font-size: 10pt;
+      margin-top: 5px;
+      color: #374151;
+    }
+
+    .cover-year {
+      font-size: 13pt;
+      font-weight: bold;
+      margin-top: 25px;
+    }
+
+    /* Certificate Page */
+    .certificate-page {
+      min-height: 980px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px 10px;
+      text-align: center;
+    }
+
+    .cert-title {
+      font-size: 18pt;
+      letter-spacing: 0.1em;
+      margin: 35px 0 25px 0;
+      text-decoration: underline;
+    }
+
+    .cert-body {
+      font-size: 12pt;
+      line-height: 2;
+      text-align: justify;
+      margin: 30px 15px;
+      text-indent: 2em;
+    }
+
+    .cert-signatures {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 80px;
+      padding: 0 30px;
+      text-align: center;
+    }
+
+    .sig-block {
+      width: 220px;
+    }
+
+    .sig-name {
+      font-weight: bold;
+      font-size: 12pt;
+      margin-bottom: 4px;
+    }
+
+    .sig-role {
+      font-size: 11pt;
+    }
+
+    /* Mockup Figure Box */
+    .figure-box {
+      border: 1px solid #94a3b8;
+      background: #f8fafc;
+      border-radius: 6px;
+      padding: 12px;
+      margin: 1.2em 0;
+      text-align: center;
+    }
+
+    .figure-caption {
+      font-size: 10pt;
+      font-style: italic;
+      margin-top: 6px;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .mockup-preview {
+      background: #0f172a;
+      color: #38bdf8;
+      border-radius: 4px;
+      padding: 14px;
+      text-align: left;
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 8.5pt;
+      line-height: 1.35;
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Print Button for Browser View -->
+  <div class="no-print" style="position: fixed; top: 15px; right: 20px; z-index: 9999;">
+    <button onclick="window.print()" style="background: #0284c7; color: #fff; border: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.25);">
+      🖨️ Print to PDF / Paper
+    </button>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PAGE 1: COVER PAGE                                                        -->
+  <!-- ========================================================================= -->
+  <div class="page cover-page">
+    <div class="cover-header">
+      24INMCAL391 - RDBMS LAB<br>
+      24INMCAL393 - USER INTERFACE AND DESIGN LAB<br>
+      24INMCAT307 - SOFTWARE ENGINEERING
+    </div>
+
+    <div class="cover-sub">
+      Microproject Report Submitted By
+    </div>
+
+    <div class="cover-author">
+      <div class="author-name">CLARE LYZ MATHEW</div>
+      <div class="author-reg">AJC24MCA-I020</div>
+    </div>
+
+    <div>
+      <div class="cover-degree-note">In Partial fulfillment for the Award of the Degree Of</div>
+      <div class="cover-degree-name">INTEGRATED MASTER OF COMPUTER APPLICATIONS<br>(MCA FIVE YEAR)</div>
+    </div>
+
+    <div class="cover-logo-container">
+      <div class="emblem-circle">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 4px;">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+          <path d="M2 12h20"></path>
+        </svg>
+        <span>AMAL JYOTHI</span>
+        <span style="font-size: 7.5pt;">Kanjirappally</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="cover-college">
+        AMAL JYOTHI COLLEGE OF ENGINEERING AUTONOMOUS,<br>
+        KANJIRAPPALLY
+      </div>
+      <div class="cover-address">
+        [Approved by AICTE, Accredited by NAAC.<br>
+        Koovappally, Kanjirappally, Kottayam, Kerala – 686518]
+      </div>
+    </div>
+
+    <div class="cover-year">
+      2026-2027
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PAGE 2: CERTIFICATE                                                       -->
+  <!-- ========================================================================= -->
+  <div class="page certificate-page">
+    <div>
+      <div style="font-size: 13pt; font-weight: bold; text-transform: uppercase;">
+        DEPARTMENT OF COMPUTER APPLICATIONS
+      </div>
+      <div style="font-size: 12pt; font-weight: bold; text-transform: uppercase; margin-top: 4px;">
+        AMAL JYOTHI COLLEGE OF ENGINEERING AUTONOMOUS,<br>
+        KANJIRAPPALLY
+      </div>
+
+      <div class="cover-logo-container" style="margin: 25px 0;">
+        <div class="emblem-circle" style="width: 120px; height: 120px;">
+          <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 3px;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+            <path d="M2 12h20"></path>
+          </svg>
+          <span style="font-size: 8pt;">AJCE MCA</span>
+        </div>
+      </div>
+
+      <div class="cert-title">CERTIFICATE</div>
+
+      <div class="cert-body">
+        This is to certify that the Microproject report entitled <strong>"ESPORTS ARENA: Universal Tournament & Bracket Management System with Relational MySQL JOIN Architecture"</strong>, submitted in combined fulfillment of the requirements for <strong>"24INMCAL391 - RDBMS Lab"</strong>, <strong>"24INMCAL393 - User Interface and Design Lab"</strong>, and <strong>"24INMCAT307 - Software Engineering"</strong>, is the bonafide work done by <strong>CLARE LYZ MATHEW (Reg. No: AJC24MCA-I020)</strong> in partial fulfillment of the requirements for the award of the Degree of <strong>Integrated Master of Computer Applications</strong> under Amal Jyothi College of Engineering Autonomous, Kanjirappally during the academic year <strong>2026-2027</strong>.
+      </div>
+    </div>
+
+    <div>
+      <div class="cert-signatures">
+        <div class="sig-block">
+          <div style="height: 45px;"></div>
+          <div class="sig-name">Ms. Navyamol K T</div>
+          <div class="sig-role">Lab In - Charge</div>
+        </div>
+
+        <div class="sig-block">
+          <div style="height: 45px;"></div>
+          <div class="sig-name">Dr. Bijimol T K</div>
+          <div class="sig-role">Head of the Department</div>
+        </div>
+      </div>
+
+      <div style="text-align: center; font-weight: bold; margin-top: 35px; font-size: 12pt;">
+        2026-2027
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PAGE 3: ABSTRACT, PROJECT OVERVIEW, TECHNOLOGIES USED                     -->
+  <!-- ========================================================================= -->
+  <div class="page">
+    <h2>Abstract</h2>
+    <p>
+      The <strong>ESPORTS ARENA</strong> is a comprehensive, full-stack tournament management and bracket orchestration platform engineered to streamline the end-to-end administration of competitive electronic sports competitions. Built around a robust relational MySQL architecture and a component-driven React 19 single-page interface, the system eliminates administrative friction by combining multi-game discipline management, real-time single-elimination bracket tracking, live match monitoring, and relational automated progression. By leveraging advanced relational database design—including five interconnected normalized entities, foreign key constraints, cascading triggers, and multi-table <code>INNER</code> and <code>LEFT JOIN</code> aggregations—the platform guarantees absolute data integrity across tournament registrations, match series outcomes, and dynamic leaderboards. The user interface embodies contemporary design principles, offering seamless Cyber Dark and Soft Titanium Light themes, dynamic Challonge-style tree visualizations, and one-click manual winner adjudication that synchronizes instantaneously with the backend database. Furthermore, with built-in offline LAN backup serialization, the application serves both online community leagues and disconnected local area network arena tournaments, delivering an enterprise-grade operational standard for pro esports events.
+    </p>
+
+    <h2>Project Overview</h2>
+    <h3>1. Introduction to the Project</h3>
+    <p>
+      Electronic sports (esports) have experienced explosive global growth, transitioning from informal LAN parties into multi-million-dollar global spectacles with millions of concurrent viewers across titles like League of Legends, Counter-Strike 2, and Valorant. Despite this commercial expansion, amateur organizers, collegiate leagues, and local LAN centers frequently struggle with fragile spreadsheets, manual bracket drawing, and disjointed scorekeeping tools. The <strong>ESPORTS ARENA</strong> system was conceptualized and developed to bridge this gap, delivering an autonomous, professional, and accessible tournament management platform that couples sophisticated database engineering with intuitive user experience design.
+    </p>
+
+    <h3>2. Objectives of the Project</h3>
+    <ul>
+      <li><strong>Automate Bracket Lifecycle Management:</strong> Implement deterministic single-elimination tournament trees (Quarterfinals, Semifinals, Grand Finals) with automated winner progression based on relational lineage (<code>next_match_id</code>).</li>
+      <li><strong>Provide Live In-Progress Status Viewing:</strong> Allow tournament administrators and spectators to monitor ongoing matches with real-time score counters, map tracking, and dedicated live arena dashboards.</li>
+      <li><strong>Implement Manual Adjudication Controls:</strong> Equip referees with one-click manual winner selection buttons that immediately persist match outcomes into the MySQL database and advance teams to succeeding rounds.</li>
+      <li><strong>Showcase Advanced Relational Database Capabilities:</strong> Structure normalized tables ensuring referential integrity and execute complex multi-table SQL JOIN queries for live analytics and win-rate computations.</li>
+      <li><strong>Support Disconnected / Offline LAN Arenas:</strong> Guarantee zero reliance on external CDNs or cloud assets by utilizing local inline SVG team crests and complete JSON import/export routines.</li>
+    </ul>
+
+    <h3>3. Scope of the Project</h3>
+    <p>
+      The scope encompasses competitive multi-game tournament setups (League of Legends, Counter-Strike 2, Valorant, Rocket League, Dota 2, and Custom Titles), team roster tracking, bracket generation, live match scorekeeping, dynamic leaderboards, and an interactive SQL query inspector. The platform is designed for cross-platform deployment, running seamlessly on local network hosts or distributed web servers.
+    </p>
+
+    <h2>Technologies Used</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Technology / Library</th>
+          <th>Purpose & Role in Project</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Frontend Architecture</strong></td>
+          <td>React 19 (JavaScript ES6+)</td>
+          <td>Component-driven declarative single-page application framework.</td>
+        </tr>
+        <tr>
+          <td><strong>Routing & Navigation</strong></td>
+          <td>React Router DOM v7</td>
+          <td>Client-side routing across tournaments, brackets, teams, and SQL views.</td>
+        </tr>
+        <tr>
+          <td><strong>Styling & Design System</strong></td>
+          <td>Modern Vanilla CSS (Custom Tokens)</td>
+          <td>Custom design tokens for Obsidian Dark & Soft Titanium Light themes.</td>
+        </tr>
+        <tr>
+          <td><strong>Iconography</strong></td>
+          <td>Lucide React</td>
+          <td>Lightweight, scalable SVG vector icons for UI state indicators.</td>
+        </tr>
+        <tr>
+          <td><strong>Build Tool & Bundler</strong></td>
+          <td>Vite 8.3</td>
+          <td>High-speed development server with hot module replacement (HMR).</td>
+        </tr>
+        <tr>
+          <td><strong>Backend API Runtime</strong></td>
+          <td>Node.js & Express.js 4.19</td>
+          <td>RESTful HTTP microservice handling routing, validation, and JSON endpoints.</td>
+        </tr>
+        <tr>
+          <td><strong>Database Engine</strong></td>
+          <td>MySQL 8.x (RDBMS)</td>
+          <td>Relational database engine enforcing foreign keys, indexes, and ACID transactions.</td>
+        </tr>
+        <tr>
+          <td><strong>Database Connector</strong></td>
+          <td>mysql2 / promise</td>
+          <td>Asynchronous connection pooling with parameterized SQL query execution.</td>
+        </tr>
+        <tr>
+          <td><strong>Process Concurrency</strong></td>
+          <td>Concurrently 8.2</td>
+          <td>Unified single-command execution of both backend and frontend servers.</td>
+        </tr>
+        <tr>
+          <td><strong>Version Control</strong></td>
+          <td>Git & GitHub</td>
+          <td>Distributed source code management and collaborative versioning.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PAGE 4: USER ROLES & KEY FUNCTIONAL MODULES                               -->
+  <!-- ========================================================================= -->
+  <div class="page">
+    <h2>User Roles & Responsibilities</h2>
+    <p>
+      The ESPORTS ARENA platform enforces a clear separation of operational concerns through distinct functional user roles:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>User Role</th>
+          <th>Primary Responsibilities</th>
+          <th>System Permissions & Access Scope</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Tournament Administrator (Admin)</strong></td>
+          <td>Initializes tournaments, registers pro squads, configures prize pools, and sets game formats.</td>
+          <td>Full CRUD access to tournaments, teams, players, and bracket configurations.</td>
+        </tr>
+        <tr>
+          <td><strong>Match Referee / Official</strong></td>
+          <td>Monitors live matches, enters map scores, updates status to LIVE, and declares winning teams.</td>
+          <td>Score updating, manual winner declaration, and live status toggling.</td>
+        </tr>
+        <tr>
+          <td><strong>Team Captain / Player</strong></td>
+          <td>Views team match schedules, current seeding, bracket positions, and roster listings.</td>
+          <td>Read-only bracket viewing, team registration request submission.</td>
+        </tr>
+        <tr>
+          <td><strong>Public Spectator / Guest</strong></td>
+          <td>Follows live tournament brackets, inspects leaderboard standings, and views SQL query executions.</td>
+          <td>Read-only access to tournaments, live scoreboard hub, and SQL Inspector.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Key Functional Modules</h2>
+
+    <h3>Module 1: Tournament Lifecycle & Category Management</h3>
+    <ul>
+      <li><strong>Purpose:</strong> Oversees the end-to-end configuration of multi-game esports competitions, ranging from international invitationals to local community LANs.</li>
+      <li><strong>Functionality:</strong> Supports multi-game disciplines (LoL, CS2, Valorant, Rocket League, Dota 2, and Custom Titles), single-elimination tree seeding, customizable prize allocations, and date/location scheduling.</li>
+      <li><strong>Inputs:</strong> Tournament Name, Game Discipline, Match Format (BO1/BO3/BO5), Prize Pool, Team Seeding, Venue Location.</li>
+      <li><strong>Outputs:</strong> New tournament record persisted in <code>tournaments</code> table; auto-generated single-elimination bracket graph with 7 interconnected match entities.</li>
+    </ul>
+
+    <h3>Module 2: Interactive Single-Elimination Bracket Tree Engine</h3>
+    <ul>
+      <li><strong>Purpose:</strong> Renders visual Challonge-style bracket trees illustrating progression from Quarterfinals (Round of 8) through Semifinals to the Grand Finals.</li>
+      <li><strong>Functionality:</strong> Displays opposing teams, seeded ranks, official color accents, and live/final map scores. Incorporates an interactive lineage graph where advancing finalists are dynamically rendered upon match conclusion.</li>
+      <li><strong>Inputs:</strong> Tournament identifier (<code>tournament_id</code>).</li>
+      <li><strong>Outputs:</strong> Responsive SVG/CSS bracket hierarchy with clickable matchup cards and winner highlight badges.</li>
+    </ul>
+
+    <h3>Module 3: Live Arena Monitor & Real-Time Broadcast Hub</h3>
+    <ul>
+      <li><strong>Purpose:</strong> Delivers an dedicated operational monitor for active games currently in progress.</li>
+      <li><strong>Functionality:</strong> Provides a "Live Matches Only" filter view with animated pulsing live badges, map score adjustment steppers (<code>+</code>/<code>-</code>), in-game status indicators, and instantaneous winner declaration.</li>
+      <li><strong>Inputs:</strong> Live match selection, score adjustment increments.</li>
+      <li><strong>Outputs:</strong> Broadcast-grade scoreboard card displaying team crests, live map tallies, and direct match adjudication controls.</li>
+    </ul>
+
+    <h3>Module 4: Manual Winner Selection & Relational Auto-Advancement Engine</h3>
+    <ul>
+      <li><strong>Purpose:</strong> Enables referees to manually designate the match winner and guarantee instant relational progression in the bracket.</li>
+      <li><strong>Functionality:</strong> Clicking <code>👑 Win [TAG]</code> sends a validated <code>PUT</code> request to the API, writing the winning team's ID to <code>winner_id</code>, setting status to <code>completed</code>, and executing a targeted relational update into <code>team1_id</code> or <code>team2_id</code> of <code>next_match_id</code>.</li>
+      <li><strong>Inputs:</strong> Match ID, Winner Team ID, Winning Map Scores.</li>
+      <li><strong>Outputs:</strong> Synchronized database update across two tables and visual advancement of the winner into the next round match card.</li>
+    </ul>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PAGE 5: KEY MODULES (CONT.) & DATABASE DESIGN                             -->
+  <!-- ========================================================================= -->
+  <div class="page">
+    <h3>Module 5: Team Roster & Pro Player Management</h3>
+    <ul>
+      <li><strong>Purpose:</strong> Maintains accurate registry data for competitive organizations, team captains, and 5-man pro rosters.</li>
+      <li><strong>Functionality:</strong> Tracks player in-game aliases (e.g., Faker, Chovy, ZmjjKK), tactical roles (IGL, AWPer, Duelist, Mid Laner), regional affiliations, and distinctive hex primary colors used to render SVG emblems.</li>
+      <li><strong>Inputs:</strong> Team name, 3-character tag, captain name, region, primary color, roster player profiles.</li>
+      <li><strong>Outputs:</strong> Relational player records bound via <code>team_id</code> foreign key constraint; dynamic crest generation.</li>
+    </ul>
+
+    <h3>Module 6: Global Standings & Dynamic Win-Rate Aggregation</h3>
+    <ul>
+      <li><strong>Purpose:</strong> Computes cumulative tournament victories, total series played, match wins, and win-rate percentages across all registered squads.</li>
+      <li><strong>Functionality:</strong> Utilizes conditional SQL aggregation (<code>CASE WHEN m.winner_id = t.id THEN 1 ELSE 0 END</code>) to compute real-time leaderboards with podium rankings (#1, #2, #3).</li>
+      <li><strong>Inputs:</strong> All completed match history records.</li>
+      <li><strong>Outputs:</strong> Ranked tabular leaderboard with visual win-rate progress meters and championship accolades.</li>
+    </ul>
+
+    <h3>Module 7: SQL JOINs & Relational Schema Inspector</h3>
+    <ul>
+      <li><strong>Purpose:</strong> Serves as an interactive educational and debugging workbench to showcase database queries in real time.</li>
+      <li><strong>Functionality:</strong> Features an SQL query playground with syntax-highlighted SQL scripts, execution time benchmarks in milliseconds, and raw tabular result visualizers.</li>
+      <li><strong>Inputs:</strong> Selected query type (Tournaments Overview, Bracket Lineage, Rosters, Standings).</li>
+      <li><strong>Outputs:</strong> Formatted JSON payload, query execution time, and rendered table rows.</li>
+    </ul>
+
+    <h2>Database Design (24INMCAL391 - RDBMS Lab)</h2>
+    <p>
+      The database architecture is designed in 3rd Normal Form (3NF) to eliminate data redundancy while facilitating high-speed multi-table relational joins. The database name is <strong><code>esports_db</code></strong>, hosted on MySQL 8.x.
+    </p>
+
+    <h3>Table 1: <code>tournaments</code></h3>
+    <p class="no-indent">Stores macro-level tournament specifications, game disciplines, prize pools, and operational dates.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Column Name</th>
+          <th>Data Type</th>
+          <th>Constraints</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>id</code></td><td>INT</td><td>PRIMARY KEY, AUTO_INCREMENT</td><td>Unique tournament identifier</td></tr>
+        <tr><td><code>name</code></td><td>VARCHAR(150)</td><td>NOT NULL</td><td>Full tournament title</td></tr>
+        <tr><td><code>game_title</code></td><td>VARCHAR(100)</td><td>NOT NULL</td><td>Esports game title (e.g., CS2, Valorant, LoL)</td></tr>
+        <tr><td><code>category</code></td><td>VARCHAR(50)</td><td>DEFAULT 'Tactical Shooter'</td><td>Genre category (FPS, MOBA, Sports)</td></tr>
+        <tr><td><code>format</code></td><td>VARCHAR(50)</td><td>DEFAULT 'Single Elimination'</td><td>Tournament elimination structure</td></tr>
+        <tr><td><code>match_format</code></td><td>VARCHAR(20)</td><td>DEFAULT 'BO3'</td><td>Series length (BO1, BO3, BO5)</td></tr>
+        <tr><td><code>status</code></td><td>ENUM</td><td>'upcoming', 'active', 'completed'</td><td>Lifecycle operational status</td></tr>
+        <tr><td><code>prize_pool</code></td><td>DECIMAL(12,2)</td><td>DEFAULT 0.00</td><td>Total prize money in USD</td></tr>
+        <tr><td><code>max_teams</code></td><td>INT</td><td>DEFAULT 8</td><td>Maximum bracket team capacity</td></tr>
+        <tr><td><code>start_date</code></td><td>DATE</td><td>NOT NULL</td><td>Tournament commencement date</td></tr>
+        <tr><td><code>end_date</code></td><td>DATE</td><td>NULL</td><td>Tournament concluding date</td></tr>
+        <tr><td><code>location</code></td><td>VARCHAR(100)</td><td>DEFAULT 'LAN Arena'</td><td>Physical venue or online region</td></tr>
+        <tr><td><code>is_offline_lan</code></td><td>BOOLEAN</td><td>DEFAULT TRUE</td><td>Flag indicating local LAN or online</td></tr>
+        <tr><td><code>created_at</code></td><td>TIMESTAMP</td><td>DEFAULT CURRENT_TIMESTAMP</td><td>Entity creation timestamp</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PAGE 6: DATABASE DESIGN (CONT.)                                           -->
+  <!-- ========================================================================= -->
+  <div class="page">
+    <h3>Table 2: <code>teams</code></h3>
+    <p class="no-indent">Stores competitive esports organizations, unique acronym tags, captains, and visual branding tokens.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Column Name</th>
+          <th>Data Type</th>
+          <th>Constraints</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>id</code></td><td>INT</td><td>PRIMARY KEY, AUTO_INCREMENT</td><td>Unique team identifier</td></tr>
+        <tr><td><code>name</code></td><td>VARCHAR(100)</td><td>NOT NULL, UNIQUE</td><td>Full organization name (e.g., T1, FaZe Clan)</td></tr>
+        <tr><td><code>tag</code></td><td>VARCHAR(10)</td><td>NOT NULL, UNIQUE</td><td>2-4 character official team tag</td></tr>
+        <tr><td><code>captain_name</code></td><td>VARCHAR(100)</td><td>NOT NULL</td><td>Designated in-game leader / captain</td></tr>
+        <tr><td><code>region</code></td><td>VARCHAR(50)</td><td>DEFAULT 'Global'</td><td>Competitive home region (e.g., Europe, Korea)</td></tr>
+        <tr><td><code>primary_color</code></td><td>VARCHAR(20)</td><td>DEFAULT '#00f0ff'</td><td>Hex code used to render dynamic SVG emblem</td></tr>
+        <tr><td><code>created_at</code></td><td>TIMESTAMP</td><td>DEFAULT CURRENT_TIMESTAMP</td><td>Registration timestamp</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Table 3: <code>players</code></h3>
+    <p class="no-indent">Maintains active roster members participating under each team, normalized to eliminate repetition.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Column Name</th>
+          <th>Data Type</th>
+          <th>Constraints</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>id</code></td><td>INT</td><td>PRIMARY KEY, AUTO_INCREMENT</td><td>Unique player identifier</td></tr>
+        <tr><td><code>team_id</code></td><td>INT</td><td>FOREIGN KEY -> teams(id) ON DELETE CASCADE</td><td>Parent organization foreign key</td></tr>
+        <tr><td><code>nickname</code></td><td>VARCHAR(50)</td><td>NOT NULL</td><td>In-game pro alias (e.g., Faker, ZywOo, donk)</td></tr>
+        <tr><td><code>full_name</code></td><td>VARCHAR(100)</td><td>NULL</td><td>Player's legal full name</td></tr>
+        <tr><td><code>role</code></td><td>VARCHAR(50)</td><td>NOT NULL</td><td>Tactical squad position (IGL, AWPer, Rifler)</td></tr>
+        <tr><td><code>rank_tier</code></td><td>VARCHAR(50)</td><td>DEFAULT 'Pro Elite'</td><td>Official competitive rank tier</td></tr>
+        <tr><td><code>is_captain</code></td><td>BOOLEAN</td><td>DEFAULT FALSE</td><td>Boolean leadership indicator</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Table 4: <code>tournament_teams</code> (Junction Entity)</h3>
+    <p class="no-indent">Models the Many-to-Many (M:N) relationship between tournaments and participating teams with seeded positioning.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Column Name</th>
+          <th>Data Type</th>
+          <th>Constraints</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>id</code></td><td>INT</td><td>PRIMARY KEY, AUTO_INCREMENT</td><td>Junction record identifier</td></tr>
+        <tr><td><code>tournament_id</code></td><td>INT</td><td>FOREIGN KEY -> tournaments(id) ON DELETE CASCADE</td><td>Target tournament reference</td></tr>
+        <tr><td><code>team_id</code></td><td>INT</td><td>FOREIGN KEY -> teams(id) ON DELETE CASCADE</td><td>Enrolled team reference</td></tr>
+        <tr><td><code>seed</code></td><td>INT</td><td>NOT NULL</td><td>Bracket seed number (1 through 8)</td></tr>
+        <tr><td><code>registered_at</code></td><td>TIMESTAMP</td><td>DEFAULT CURRENT_TIMESTAMP</td><td>Timestamp of tournament entry</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Table 5: <code>matches</code> (Relational Graph Structure)</h3>
+    <p class="no-indent">Represents the single-elimination tournament bracket graph with self-referencing forward pointers.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Column Name</th>
+          <th>Data Type</th>
+          <th>Constraints</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><code>id</code></td><td>INT</td><td>PRIMARY KEY, AUTO_INCREMENT</td><td>Match series identifier</td></tr>
+        <tr><td><code>tournament_id</code></td><td>INT</td><td>FOREIGN KEY -> tournaments(id) ON DELETE CASCADE</td><td>Associated tournament ID</td></tr>
+        <tr><td><code>round_number</code></td><td>INT</td><td>NOT NULL</td><td>1: Quarterfinals, 2: Semifinals, 3: Finals</td></tr>
+        <tr><td><code>match_order</code></td><td>INT</td><td>NOT NULL</td><td>Position in round (e.g., QF1, QF2, QF3, QF4)</td></tr>
+        <tr><td><code>team1_id</code></td><td>INT</td><td>FOREIGN KEY -> teams(id) ON DELETE SET NULL</td><td>First competing team reference</td></tr>
+        <tr><td><code>team2_id</code></td><td>INT</td><td>FOREIGN KEY -> teams(id) ON DELETE SET NULL</td><td>Second competing team reference</td></tr>
+        <tr><td><code>score1</code></td><td>INT</td><td>DEFAULT 0</td><td>Games won by Team 1</td></tr>
+        <tr><td><code>score2</code></td><td>INT</td><td>DEFAULT 0</td><td>Games won by Team 2</td></tr>
+        <tr><td><code>winner_id</code></td><td>INT</td><td>FOREIGN KEY -> teams(id) ON DELETE SET NULL</td><td>Adjudicated winner team ID</td></tr>
+        <tr><td><code>status</code></td><td>ENUM</td><td>'pending', 'live', 'completed'</td><td>Match operational state</td></tr>
+        <tr><td><code>scheduled_time</code></td><td>DATETIME</td><td>NULL</td><td>Scheduled start timestamp</td></tr>
+        <tr><td><code>next_match_id</code></td><td>INT</td><td>FOREIGN KEY -> matches(id) ON DELETE SET NULL</td><td>Forward pointer to next round series</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PAGE 7: RELATIONAL QUERIES & MULTI-TABLE JOINS                            -->
+  <!-- ========================================================================= -->
+  <div class="page">
+    <h2>Multi-Table SQL JOIN Queries Showcase</h2>
+    <p>
+      In strict accordance with the syllabus for <strong>24INMCAL391 (RDBMS Lab)</strong>, the system avoids data denormalization by utilizing explicit multi-table <code>INNER JOIN</code>, <code>LEFT JOIN</code>, and aggregate query structures.
+    </p>
+
+    <h3>1. Multi-Table Bracket Match Lineage JOIN Query</h3>
+    <p>
+      Retrieves the complete tournament bracket by joining the <code>matches</code> table with <code>tournaments</code> and three separate instances of the <code>teams</code> table (for Team 1, Team 2, and the declared Winner):
+    </p>
+    <pre><code>SELECT 
+    m.id,
+    m.tournament_id,
+    m.round_number,
+    m.match_order,
+    m.status,
+    m.score1,
+    m.score2,
+    m.scheduled_time,
+    m.next_match_id,
+    -- Team 1 Information
+    m.team1_id,
+    t1.name AS team1_name,
+    t1.tag AS team1_tag,
+    t1.primary_color AS team1_color,
+    -- Team 2 Information
+    m.team2_id,
+    t2.name AS team2_name,
+    t2.tag AS team2_tag,
+    t2.primary_color AS team2_color,
+    -- Adjudicated Winner Information
+    m.winner_id,
+    w.name AS winner_name,
+    w.tag AS winner_tag,
+    -- Tournament Metadata
+    tr.name AS tournament_name,
+    tr.game_title AS game_title,
+    tr.match_format AS match_format
+FROM matches m
+INNER JOIN tournaments tr ON m.tournament_id = tr.id
+LEFT JOIN teams t1 ON m.team1_id = t1.id
+LEFT JOIN teams t2 ON m.team2_id = t2.id
+LEFT JOIN teams w ON m.winner_id = w.id
+WHERE m.tournament_id = ?
+ORDER BY m.round_number ASC, m.match_order ASC;</code></pre>
+
+    <h3>2. Global Win-Rate Aggregation Query</h3>
+    <p>
+      Computes real-time win-rates and match win totals by joining <code>teams</code> with <code>tournament_teams</code> and evaluating conditional match victories:
+    </p>
+    <pre><code>SELECT 
+    t.id,
+    t.name,
+    t.tag,
+    t.captain_name,
+    t.region,
+    t.primary_color,
+    COUNT(DISTINCT tt.tournament_id) AS tournaments_entered,
+    COUNT(DISTINCT m.id) AS total_matches_played,
+    COUNT(DISTINCT CASE WHEN m.winner_id = t.id THEN m.id END) AS matches_won,
+    ROUND(
+        (COUNT(DISTINCT CASE WHEN m.winner_id = t.id THEN m.id END) / 
+         NULLIF(COUNT(DISTINCT m.id), 0)) * 100, 
+        1
+    ) AS win_rate_percentage
+FROM teams t
+LEFT JOIN tournament_teams tt ON t.id = tt.team_id
+LEFT JOIN matches m ON (m.team1_id = t.id OR m.team2_id = t.id) AND m.status = 'completed'
+GROUP BY t.id
+ORDER BY matches_won DESC, win_rate_percentage DESC;</code></pre>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PAGE 8: SOFTWARE ENGINEERING & SDLC (24INMCAT307)                         -->
+  <!-- ========================================================================= -->
+  <div class="page">
+    <h2>Software Engineering Analysis & Design (24INMCAT307)</h2>
+
+    <h3>1. System Development Life Cycle (SDLC) Methodology</h3>
+    <p>
+      The ESPORTS ARENA platform was developed following an <strong>Iterative & Agile SDLC Methodology</strong>. Given the dynamic requirements of competitive tournament bracket updates and live score adjudication, the project was segmented into four distinct iterations:
+    </p>
+    <ul>
+      <li><strong>Sprint 1 (Architecture & RDBMS Modeling):</strong> Schema design in MySQL 3NF, entity relationship modeling, connection pool configuration, and DDL script validation.</li>
+      <li><strong>Sprint 2 (REST API & Relational Auto-Advancement):</strong> Development of Express.js backend services, implementation of forward bracket advancement routines, and score update handlers.</li>
+      <li><strong>Sprint 3 (UI/UX Engineering & Bracket Visualizer):</strong> Creation of Challonge-style tree layouts, custom CSS tokens, dark/light theme switching, and live match hub integration.</li>
+      <li><strong>Sprint 4 (Historic Esports Seeding & Verification):</strong> Integration of authentic world championship brackets (2024 Worlds & Valorant Champions), live status filtering, and end-to-end testing.</li>
+    </ul>
+
+    <h3>2. Feasibility Study</h3>
+    <ul>
+      <li><strong>Technical Feasibility:</strong> The application leverages industry-standard web technologies—Node.js, Express, React 19, and MySQL 8.x. The lightweight bundle size and zero remote image dependencies enable the platform to execute seamlessly on commodity hardware without cloud GPU or external API dependencies.</li>
+      <li><strong>Operational Feasibility:</strong> The interface requires zero training for tournament coordinators. Match outcomes and live status updates can be administered through one-click buttons, dramatically reducing manual data entry overhead.</li>
+      <li><strong>Economic Feasibility:</strong> Built entirely on open-source frameworks and self-hosted MySQL, the platform incurs zero software licensing costs, making it cost-effective for universities, clubs, and amateur leagues.</li>
+    </ul>
+
+    <h3>3. Data Flow Diagram (DFD Level 0 & Level 1)</h3>
+    <p>
+      The Level 0 Context DFD captures the interaction between the primary human actors (Tournament Admin, Match Referee, Spectator) and the central Esports Arena System.
+    </p>
+
+    <div class="figure-box">
+      <div class="mockup-preview">
+[Tournament Admin] --- (Create Tournaments, Register Teams, Configure Brackets) ---+
+                                                                                    |
+                                                                                    v
+                                                                        [ ESPORTS ARENA SYSTEM ]
+                                                                        [   (Node / Express)   ]
+                                                                                    |
+                                                                                    ^
+[Match Referee]   --- (Update Scores, Toggle LIVE Status, Select Winners) ---------+
+                                                                                    |
+                                                                                    v
+[Public Viewer]   <-- (Query Bracket Hierarchy, Live Scores, Standings) ------------+
+      </div>
+      <div class="figure-caption">Figure 1: Level 0 Context Data Flow Diagram</div>
+    </div>
+
+    <p>
+      In the Level 1 DFD, administrative requests are routed through dedicated processing nodes: <strong>Process 1.0 (Tournament Management)</strong>, <strong>Process 2.0 (Bracket Auto-Advancement)</strong>, <strong>Process 3.0 (Score Adjudication)</strong>, and <strong>Process 4.0 (Leaderboard Analytics)</strong>, with data stores represented by the MySQL relational tables <code>D1: Tournaments</code>, <code>D2: Teams</code>, <code>D3: Matches</code>, and <code>D4: Players</code>.
+    </p>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PAGE 9: USER INTERFACE & DESIGN LAB (24INMCAL393)                         -->
+  <!-- ========================================================================= -->
+  <div class="page">
+    <h2>User Interface and Design System (24INMCAL393 - UID Lab)</h2>
+
+    <h3>1. UI/UX Design Philosophy</h3>
+    <p>
+      The design system for ESPORTS ARENA rejects cliché, neon-saturated AI palettes in favor of a sleek, high-readability architectural aesthetic inspired by professional tournament platforms such as Challonge, Toornament, and Esports Charts. Key design objectives include:
+    </p>
+    <ul>
+      <li><strong>High Contrast & Legibility:</strong> Strict typographic hierarchy utilizing modern Google Fonts (<em>Plus Jakarta Sans</em> for headings, <em>Inter</em> for data grids, and <em>JetBrains Mono</em> for technical telemetry).</li>
+      <li><strong>Soft Titanium Slate Light Theme:</strong> Rather than using blinding `#ffffff` backgrounds, light mode employs an eye-friendly titanium slate (`#eef2f6` with soft cards `#ffffff` and deep slate `#0f172a` typography) ensuring zero eye fatigue during multi-hour esports tournaments.</li>
+      <li><strong>Cyber Dark Mode:</strong> Deep obsidian and gunmetal surfaces (`#0b0e14` and `#121721`) accented with restrained electric cyan (`#38bdf8`) and victory amber (`#f59e0b`).</li>
+      <li><strong>Dynamic SVG Emblems (Zero Asset Failures):</strong> To ensure bulletproof offline LAN functionality, teams are assigned unique hex branding colors and acronym tags, rendered locally into crisp SVG vector crests.</li>
+    </ul>
+
+    <h3>2. Interface Screens & Visual Figures</h3>
+
+    <div class="figure-box">
+      <div class="mockup-preview">
++--------------------------------------------------------------------------------------------------+
+|  ESPORTS ARENA                                 [Tournaments]  [Teams]  [Leaderboard]  [SQL Inspector]  [☀️ Light] |
++--------------------------------------------------------------------------------------------------+
+|  IEM COLOGNE 2026: CATHEDRAL OF COUNTER-STRIKE                                                    |
+|  Counter-Strike 2 • Tactical Shooter • Single Elimination • BO3 • Prize Pool: $1,250,000 USD       |
+|                                                                                                  |
+|  [ View Option: [ All Bracket Matches (7) ]  [ 🔴 Live Matches (1) ]  [ Upcoming (1) ]  [ Completed (5) ] ]  |
+|                                                                                                  |
+|  +---------------------------+   +---------------------------+   +---------------------------+   |
+|  | MATCH #1        [FINAL]   |   | MATCH #5        [FINAL]   |   | MATCH #7        [UPCOMING]|   |
+|  | (1) [TL] Team Liquid   [2]|---| (1) [TL] Team Liquid   [2]|---| (1) [TL] Team Liquid   [0]|   |
+|  | (8) [TS] Team Spirit   [1]|   | (4) [SEN] Sentinels    [0]|   | (2) [FAZE] FaZe Clan   [0]|   |
+|  +---------------------------+   +---------------------------+   +---------------------------+   |
+|  | MATCH #2        [FINAL]   |                                                                   |
+|  | (4) [SEN] Sentinels    [2]|                                                                   |
+|  | (5) [VIT] Team Vitality [0]|                                                                   |
+|  +---------------------------+                                                                   |
+|  | MATCH #3         [🔴 LIVE] |   +---------------------------+                                   |
+|  | (2) [FAZE] FaZe Clan   [2]|---| MATCH #6        [FINAL]   |                                   |
+|  | (7) [FNC] Fnatic       [1]|   | (2) [FAZE] FaZe Clan   [2]|                                   |
+|  | [👑 Win FAZE] [Set Live]  |   | (3) [NAVI] Natus Vincere[1]|                                   |
+|  +---------------------------+   +---------------------------+                                   |
+|  | MATCH #4        [FINAL]   |                                                                   |
+|  | (3) [NAVI] NAVI        [2]|                                                                   |
+|  | (6) [C9] Cloud9        [0]|                                                                   |
+|  +---------------------------+                                                                   |
++--------------------------------------------------------------------------------------------------+
+      </div>
+      <div class="figure-caption">Figure 2: Interactive Bracket Tree with Live Status View & Manual Winner Action Controls</div>
+    </div>
+
+    <div class="figure-box">
+      <div class="mockup-preview">
++--------------------------------------------------------------------------------------------------+
+|  🔴 LIVE MATCH ARENA — IN-PROGRESS BROADCAST                                                     |
++--------------------------------------------------------------------------------------------------+
+|  +--------------------------------------------------------------------------------------------+  |
+|  |  MATCH #3 — QUARTERFINALS 3 • BEST OF 3                                                    |  |
+|  |                                                                                            |  |
+|  |         [FAZE] FaZe Clan                     VS                    [FNC] Fnatic            |  |
+|  |      Europe • Captain: karrigan          MAP SCORES             Europe • Captain: Boaster  |  |
+|  |                                                                                            |  |
+|  |          [-]   [ 1 ]   [+]                                           [-]   [ 1 ]   [+]     |  |
+|  |                                                                                            |  |
+|  |  DECLARE WINNER (Commits directly to MySQL DBMS & Advances Winner to Semifinals):         |  |
+|  |  +---------------------------------------+  +---------------------------------------+       |  |
+|  |  |     👑 Win: FaZe Clan (2-1)           |  |     👑 Win: Fnatic (1-2)              |       |  |
+|  |  +---------------------------------------+  +---------------------------------------+       |  |
+|  |                                                                                            |  |
+|  |  [ ⏸ Pause / Revert to Pending Status ]                                                     |  |
+|  +--------------------------------------------------------------------------------------------+  |
++--------------------------------------------------------------------------------------------------+
+      </div>
+      <div class="figure-caption">Figure 3: Dedicated Live Match Arena Hub with Real-Time Score Steppers and Manual Winner Selectors</div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PAGE 10: ADVANTAGES, LIMITATIONS, ENHANCEMENTS, CONCLUSION                -->
+  <!-- ========================================================================= -->
+  <div class="page">
+    <h2>Advantages of the System</h2>
+    <ul>
+      <li><strong>Deterministic Bracket Progression:</strong> Eliminates human scoring errors by automatically propagating winning team identifiers along relational foreign key pointers to succeeding rounds.</li>
+      <li><strong>Complete Operational Transparency:</strong> Embedded SQL Query Inspector enables students, faculty, and administrators to view the precise SQL join statements executing beneath each view.</li>
+      <li><strong>Bulletproof Offline LAN Capability:</strong> Operates completely offline during arena LAN tournaments; zero reliance on cloud CDNs or external image hosts.</li>
+      <li><strong>Live Match Telemetry:</strong> Referees can switch any match between Pending, Live, and Completed with single-click manual adjudication.</li>
+      <li><strong>Enterprise RDBMS Integrity:</strong> Enforces primary and foreign key constraints, preventing orphaned match entries or conflicting seed numbers.</li>
+      <li><strong>Contemporary Responsive UX:</strong> Fluid transitions, eye-friendly light/dark modes, and mobile-friendly layouts ensure usability on smartphones, tablets, and desktop workstations.</li>
+    </ul>
+
+    <h2>Limitations</h2>
+    <ul>
+      <li><strong>Tournament Structure:</strong> Currently optimized specifically for 8-team single-elimination brackets; double-elimination and round-robin group stages require additional junction schema definitions.</li>
+      <li><strong>Manual Player Stats Entry:</strong> Player individual statistics (e.g., K/D ratio, headshot percentage) are stored as roster profile metadata rather than granular round-by-round event streams.</li>
+      <li><strong>Single Administrator Session:</strong> Authentication currently relies on role-based operational segregation rather than JWT-based multi-user concurrent login sessions.</li>
+    </ul>
+
+    <h2>Future Enhancements</h2>
+    <ul>
+      <li><strong>Double Elimination & Swiss Formats:</strong> Expand the bracket engine to support Lower Bracket runs, Grand Final resets, and Swiss-system qualifiers.</li>
+      <li><strong>Automated Game Server Webhook Integration:</strong> Ingest direct game telemetry webhooks from Counter-Strike 2 Game State Integration (GSI) and Riot Games API to update map scores autonomously.</li>
+      <li><strong>Live Stream Embeds:</strong> Embed low-latency Twitch, YouTube Gaming, or local RTMP arena video streams directly inside the Live Arena Hub.</li>
+      <li><strong>PDF Certificate Generator:</strong> Automatically generate downloadable PDF championship certificates for the winning teams upon conclusion of the Grand Finals.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>
+      The <strong>ESPORTS ARENA</strong> successfully fulfills the combined academic criteria for <strong>RDBMS Lab (24INMCAL391)</strong>, <strong>User Interface and Design Lab (24INMCAL393)</strong>, and <strong>Software Engineering (24INMCAT307)</strong>. By unifying normalized relational database modeling, explicit multi-table SQL join architectures, agile software engineering principles, and a modern component-driven React interface, the project provides a comprehensive solution for managing competitive esports tournaments.
+    </p>
+    <p>
+      From tournament seeding and live broadcast tracking to automated bracket advancement and historical world championship records, the platform demonstrates how robust relational backend design and empathetic user experience engineering combine to deliver software that is both academically rigorous and practically deployable in competitive environments.
+    </p>
+
+    <h2>Repository & Links</h2>
+    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 15px; margin-top: 15px;">
+      <p class="no-indent" style="margin-bottom: 6px;">
+        <strong>Project Source Code Repository:</strong>
+      </p>
+      <p class="no-indent" style="font-family: 'JetBrains Mono', Consolas, monospace; color: #0284c7; font-size: 11pt; margin-bottom: 8px;">
+        <a href="https://github.com/Clare-Lyz-Mathew/microproject.git" target="_blank" style="color: #0284c7; text-decoration: none;">https://github.com/Clare-Lyz-Mathew/microproject.git</a>
+      </p>
+      <p class="no-indent" style="font-size: 10pt; color: #64748b;">
+        Contains complete frontend source code, Express REST API, MySQL database initialization schemas, expansion seeds, and documentation.
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
